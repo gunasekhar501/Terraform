@@ -28,3 +28,17 @@ terraform {
     dynamodb_table = "terraform-lock"
   }
 }
+
+### Folder Descriptions:
+
+- **services/eks**: Contains all Terraform configurations related to provisioning the Amazon EKS cluster, including resources like worker nodes, IAM roles, and security groups.
+  
+- **services/vpc**: Contains Terraform configurations for setting up the VPC, including subnets, route tables, internet gateways, and NAT gateways.
+  
+- **terraform.tfvars**: This file holds the variable values that are passed into the `variables.tf` files, such as cluster name, VPC CIDR, etc.
+  
+- **backend.tf**: Configuration file for managing Terraform state remotely using S3 and DynamoDB for state locking (optional).
+  
+- **providers.tf**: Configures the AWS provider, which connects Terraform to AWS and allows it to provision resources.
+
+This directory structure helps maintain a clean and modular separation of concerns between the VPC and EKS setup.
