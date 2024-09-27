@@ -3,12 +3,12 @@
 ###############################################
 region = "us-east-1"
 ## Application Cluster ##
-cluster_name                    = "Dev-World"
+cluster_name                    = ""
 cluster_version                 = "1.30"
-vpc_id                          = "vpc-04a09cda068fd2657"
+vpc_id                          = ""
 cluster_endpoint_public_access  = false
 cluster_endpoint_private_access = true
-subnets_ids                     = ["subnet-082dfb56e248ebde0", "subnet-05381085fb0a71276"]
+subnets_ids                     = [""]
 ond_min_size                    = 1
 ond_desired_size                = 1
 ond_max_size                    = 3
