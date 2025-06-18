@@ -1,4 +1,4 @@
-VPC Terraform Module
+# VPC Terraform Module
 This Terraform module creates a complete VPC infrastructure with the following components:
 Architecture
 * **1 VPC** with IPv4 and IPv6 support
