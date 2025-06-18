@@ -9,7 +9,7 @@ Architecture
 * **NAT Gateways** for private subnet internet access (optional)
 * **Internet Gateway** for public subnet internet access
 * **Route Tables** configured appropriately for each subnet type
-Directory Structure
+# Directory Structure
 
 ```
 .
@@ -47,7 +47,7 @@ module "vpc" {
 }
 ```
 
-Full Parent Module Usage
+## Full Parent Module Usage
 1. Copy the terraform.tfvars.example to terraform.tfvars
 2. Modify the variables according to your needs
 3. Run terraform commands:
