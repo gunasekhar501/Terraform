@@ -1,4 +1,5 @@
-# VPC Terraform Module
+# AWS VPC Terraform Module
+
 This Terraform module creates a complete VPC infrastructure with the following components:
 Architecture
 * **1 VPC** with IPv4 and IPv6 support
@@ -62,26 +63,13 @@ terraform plan
 terraform apply
 ```
 
-Variables
-Parent Module Variables
-
-```
-NameDescriptionTypeDefaultRequiredaws_regionAWS regionstringus-east-1noenvironmentEnvironment namestringdevnovpc_cidrCIDR block for VPCstring10.0.0.0/16nocreate_nat_gatewayCreate NAT Gatewaysbooltruenocommon_tagsCommon tags for resourcesmap(string){}no
-```
-
-VPC Module Variables
-
-```
-NameDescriptionTypeDefaultRequiredname_prefixName prefix for resourcesstring-yesvpc_cidrCIDR block for VPCstring10.0.0.0/16nocreate_nat_gatewayCreate NAT GatewaysbooltruenotagsResource tagsmap(string){}no
-```
-
-Outputs
-VPC Information
+# Outputs
+* **VPC Information
 * `vpc_id` - VPC ID
 * `vpc_cidr_block` - VPC IPv4 CIDR block
 * `vpc_ipv6_cidr_block` - VPC IPv6 CIDR block
 * `internet_gateway_id` - Internet Gateway ID
-Subnet Information
+# Subnet Information
 * `private_subnet_ids` - List of private subnet IDs
 * `private_subnet_cidrs` - List of private subnet CIDR blocks
 * `public_ipv4_subnet_ids` - List of public IPv4 subnet IDs
@@ -89,23 +77,23 @@ Subnet Information
 * `public_ipv6_subnet_ids` - List of public IPv6 subnet IDs
 * `public_ipv6_subnet_cidrs` - List of public IPv6 subnet CIDR blocks
 * `public_ipv6_subnet_ipv6_cidrs` - List of IPv6 CIDR blocks for IPv6 subnets
-NAT Gateway Information
+# NAT Gateway Information
 * `nat_gateway_ids` - List of NAT Gateway IDs
 * `nat_public_ips` - List of NAT Gateway public IPs
-Subnet CIDR Allocation
+# Subnet CIDR Allocation
 The module automatically calculates subnet CIDRs using the `cidrsubnet()` function:
-* **Private subnets**: 10.0.0.0/24, 10.0.1.0/24, 10.0.2.0/24
-* **Public IPv4 subnets**: 10.0.10.0/24, 10.0.11.0/24
-* **Public IPv6 subnets**: 10.0.20.0/24, 10.0.21.0/24 (+ IPv6 blocks)
-High Availability
+* **Private subnets**: 10.50.0.0/20, 10.50.16.0/20, 10.50.32.0/20
+* **Public IPv4 subnets**: 10.50.100.0/22, 10.50.104.0/22
+* **Public IPv6 subnets**: 10.50.200.0/22, 10.50.204.0/22 (+ IPv6 blocks)
+# High Availability
 * Subnets are distributed across multiple Availability Zones
 * Each private subnet gets its own NAT Gateway for redundancy
 * NAT Gateways are placed in public IPv4 subnets
-Requirements
+# Requirements
 * Terraform >= 1.0
 * AWS Provider ~> 5.0
 * Sufficient AWS permissions to create VPC resources
-Cost Considerations
+# Cost Considerations
 * NAT Gateways incur hourly charges and data processing fees
 * Set `create_nat_gateway = false` if you don't need internet access from private subnets
 * Each private subnet gets its own NAT Gateway for high availability
