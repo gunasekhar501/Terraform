@@ -64,7 +64,7 @@ terraform apply
 ```
 
 # Outputs
-* **VPC Information
+## VPC Information
 * `vpc_id` - VPC ID
 * `vpc_cidr_block` - VPC IPv4 CIDR block
 * `vpc_ipv6_cidr_block` - VPC IPv6 CIDR block
